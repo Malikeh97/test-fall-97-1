@@ -24,10 +24,37 @@ public class UserTest {
         user1.addFriend(user1);
     }
 
-    @Test  (expected = IllegalArgumentException.class)
+    @Test (expected = IllegalArgumentException.class)
     public void shouldNotAddDuplicateFriend() {
         user1.addFriend(user2);
         user1.addFriend(user2);
+    }
+
+    @Test
+    public void shouldHaveTwoFriends() {
+        user1.addFriend(user2);
+        user1.addFriend(user3);
+        assertEquals(2, user1.friends.size());
+    }
+
+    @Test
+    public void shouldBeFriendWithAddedFriend() {
+        user1.addFriend(user2);
+        assertTrue(user1.friends.contains(user2));
+    }
+
+    @Test
+    public void shouldHaveReverseFriendshipByRemovedFriend() {
+        user1.addFriend(user2);
+        assertTrue(user2.friends.contains(user1));
+    }
+
+    @Test
+    public void shouldNotHaveAnyFriends() {
+        user1.friends.add(user2);
+        user2.friends.add(user1);
+        user1.removeFriend(user2);
+        assertEquals(0, user1.friends.size());
     }
 
     @Test
@@ -44,18 +71,6 @@ public class UserTest {
         user2.friends.add(user1);
         user1.removeFriend(user2);
         assertFalse(user2.friends.contains(user1));
-    }
-
-    @Test
-    public void shouldBeFriendWithAddedFriend() {
-        user1.addFriend(user2);
-        assertTrue(user1.friends.contains(user2));
-    }
-
-    @Test
-    public void shouldHaveReverseFriendshipByRemovedFriend() {
-        user1.addFriend(user2);
-        assertTrue(user2.friends.contains(user1));
     }
 
     @Test
