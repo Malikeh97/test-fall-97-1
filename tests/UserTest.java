@@ -11,7 +11,7 @@ public class UserTest {
     public void setUp() {
         this.user1 = new User("ali", "tabatabaei");
         this.user2 = new User("malikeh", "ehghaghi");
-        this.user2 = new User("reza", "daemi");
+        this.user3 = new User("reza", "daemi");
     }
 
     @Test (expected = IllegalArgumentException.class)
