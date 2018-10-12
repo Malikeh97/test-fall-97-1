@@ -6,10 +6,10 @@ import java.util.regex.Pattern;
  * Created by bornarz on 9/28/18.
  */
 public class User {
-    private String firstname;
-    private String surname;
-    private String email;
-    private Vector<User> friends;
+    public String firstname;
+    public String surname;
+    public String email;
+    public Vector<User> friends;
 
     public User(String firstname, String surname) {
         this.firstname = firstname;
