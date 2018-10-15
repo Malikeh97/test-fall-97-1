@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
  * Created by bornarz on 9/28/18.
  */
 public class User {
-    public String firstname;
-    public String surname;
-    public String email;
+    private String firstname;
+    private String surname;
+    private String email;
     public Vector<User> friends;
 
     public User(String firstname, String surname) {
@@ -21,12 +21,12 @@ public class User {
         this.friends = new Vector<>();
     }
 
-    public static String createEmailID(String firstpart, String secondpart) {
+    private static String createEmailID(String firstpart, String secondpart) {
         String subfirst = firstpart.substring(1);
         return subfirst + "." + secondpart + "@test.ut.ac.ir";
     }
 
-    public static boolean isEmailValid(String email) {
+    private static boolean isEmailValid(String email) {
         String regex = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(([a-zA-Z\\-0-9]+\\.)*[a-zA-Z]{2,})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher m = pattern.matcher(email);

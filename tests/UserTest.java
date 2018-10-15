@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UserTest {
-    private User user1, user2, user3;
+    private User user1, user2, user3, user4;
 
     @Before
     public void setUp() {
@@ -87,5 +87,9 @@ public class UserTest {
     public void shouldThrowExceptionOnRemoveNotFoundFriend() {
         user1.friends.add(user2);
         user1.removeFriend(user3);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void shouldNotCreateEmailWithNullFirstpart() {
     }
 }

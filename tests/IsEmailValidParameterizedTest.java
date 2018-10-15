@@ -3,6 +3,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -40,8 +42,12 @@ public class IsEmailValidParameterizedTest {
     }
 
     @Test
-    public void IsEmailValidTest() {
-        assertEquals("Email validation test failed!", isMatched, User.isEmailValid(email));
+    public void IsEmailValidTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Class mClass = User.class;
+        Method isEmailValid = mClass.getDeclaredMethod("isEmailValid", String.class);
+        isEmailValid.setAccessible(true);
+        Object value = isEmailValid.invoke(null, email);
+        assertEquals("Email validation test failed!", isMatched, value);
     }
 
 
