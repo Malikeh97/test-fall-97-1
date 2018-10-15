@@ -2,6 +2,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static org.junit.Assert.*;
 
 public class UserTest {
@@ -90,6 +93,23 @@ public class UserTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void shouldNotCreateEmailWithNullFirstpart() {
+    public void shouldNotCreateUserWithEmptyInputs() {
+        new User("a", "a");
     }
+
+//    @Test (expected = IllegalArgumentException.class)
+//    public void shouldNotCreateEmailIDWithNullFirstPart() throws NoSuchMethodException {
+//        Class mClass = User.class;
+//        Method createEmailID = mClass.getDeclaredMethod("createEmailID", String.class, String.class);
+//        createEmailID.setAccessible(true);
+//        createEmailID.invoke(null, null, "test");
+//    }
+//
+//    @Test (expected = IllegalArgumentException.class)
+//    public void shouldNotCreateEmailIDWithNullSecondPart() throws NoSuchMethodException {
+//        Class mClass = User.class;
+//        Method createEmailID = mClass.getDeclaredMethod("createEmailID", String.class, String.class);
+//        createEmailID.setAccessible(true);
+//        createEmailID.invoke(null, "test", "d");
+//    }
 }
